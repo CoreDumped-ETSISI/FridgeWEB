@@ -1,11 +1,10 @@
 var settings = {
-	 "async": true,
-	 "crossDomain": true,
-	 //"url": "http://api.coredumped.es/availableProductList",
-	 "url": "http://192.168.0.24:3000/availableProductList",
-	 "method": "GET",
-	 "headers": {}
-}
+    "async": true,
+    "crossDomain": true,
+    "url": config.host + "/availableProductList",
+    "method": "GET",
+    "headers": {}
+};
 
 var chart = [];
 var productList;
@@ -43,8 +42,8 @@ function addToChart(id){
 	reloadChartCost();
 }
 
-function loadChart(){
-	$("#chartList").empty();
+function loadChart() {
+    $("#chartList").empty();
 
 	if(chart.length == 0){
 		listIsEmpty();
