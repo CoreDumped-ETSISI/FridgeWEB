@@ -24,17 +24,6 @@
         <li><a href="#">UserImage</a></li>
         <li><a href="#">Log out</a></li>
       </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Log out</a></li>
-        <li><a href="#">UserImage</a></li>
-        <li><a href="#">UserName</a></li>
-        <li><a href="#">UserMail</a></li>
-        <li><a href="#">Nevera</a></li>
-        <li><a href="#">Historial de compras</a></li>
-        <li><a href="#">Historial de pagos</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
 
@@ -49,16 +38,20 @@
       </div>
     </li>
     <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-    <li><div class="divider"></div></li>
     <li>
-      <div id="chartList">
+      <!--  Chart chartList -->
+      <div id="chartList" style="overflow-y: scroll; max-height: 60vh; min-height: 60vh;">
 
       </div>
     </li>
+    <li><div class="divider"></div></li>
+    <li>
+      <div>
+        <span style="width: 50%; padding-left: 1em;">Total:</span>
+        <span id="total" style="width: 50%; padding-left: 1em;"></span>
+      </div>
+    </li>
   </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons" onclick="loadChart()">menu</i></a>
 
   <div class="container">
     <div class="section">
@@ -69,7 +62,11 @@
       </div>
 
     </div>
-    <br><br>
+    <div class="fixed-action-btn">
+      <a href="#" data-activates="slide-out" class="waves-effect waves-light btn btn-floating button-collapse">
+        <i class="material-icons">local_grocery_store</i>
+      </a>
+    </div>
   </div>
 
   <!--  Scripts-->
