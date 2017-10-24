@@ -6,13 +6,15 @@ var settings = {
     "headers": {}
 };
 
-var chart = [];
+var cart = [];
 var productList;
 
 
 $.ajax(settings).done(function (response) {
+	$("#products").empty();
+	
   	for (var i = 0; i < response.length ; i++) {
-   		$("#products").append(	'<div class="col s12 m6 xl4" onclick="addToChart(\'' + i + '\')">' +
+   		$("#products").append(	'<div class="col s12 m6 xl4" onclick="addToCart(\'' + i + '\')">' +
 					          		'<div class="row" style="padding: 0.5em 0.5em 0em 0.5em; margin: 0px;">' +
 						          		'<div class="card-panel waves-effect waves-green" style="display: inline-block; margin: 0px; width: 100%;">' +
 							            	'<div class="col s4">' +
@@ -30,57 +32,57 @@ $.ajax(settings).done(function (response) {
 
    	productList = JSON.parse(JSON.stringify(response));
 
-   	loadChart();
+   	loadCart();
 });
 
-function addToChart(id){
+function addToCart(id){
 	$("#empty").empty();
 
-	chart.push(productList[id]);
-	createChartElement(productList[id], (chart.length-1));
+	cart.push(productList[id]);
+	createCartElement(productList[id], (cart.length-1));
 	
-	reloadChartCost();
+	reloadCartCost();
 }
 
-function loadChart() {
-    $("#chartList").empty();
+function loadCart() {
+    $("#cartList").empty();
 
-	if(chart.length == 0){
+	if(cart.length == 0){
 		listIsEmpty();
 	}
 	else {
-		for (var i = 0; i < chart.length; i++) {
-			createChartElement(chart[i], i);
+		for (var i = 0; i < cart.length; i++) {
+			createCartElement(cart[i], i);
 		}
 	}
 
-	reloadChartCost();
+	reloadCartCost();
 }
 
-function eraseChartElement(index){
-	chart.splice(index,1);
-	loadChart();
+function eraseCartElement(index){
+	cart.splice(index,1);
+	loadCart();
 }
 
-function createChartElement(product, i){
-	$("#chartList").append('<li class="chartElement valign-wrapper"><img class="responsive-img" src="' + product.image 
+function createCartElement(product, i){
+	$("#cartList").append('<li class="cartElement valign-wrapper"><img class="responsive-img" src="' + product.image 
 		+ '" style="width: 15%; margin-left: 5%; object-fit: contain;"><span style="width: 65%; padding-left: 1em;">' + product.name 
-		+ '</span><i class="material-icons" onclick="eraseChartElement(\'' + i 
+		+ '</span><i class="material-icons" onclick="eraseCartElement(\'' + i 
 		+ '\')" style="cursor: pointer;">clear</i></li>');
 }
 
-function reloadChartCost(){
+function reloadCartCost(){
 	var total = 0;
 
 	$("#total").empty();
 
-	for (var i = 0; i < chart.length ; i++) {
-		total += chart[i].price;
+	for (var i = 0; i < cart.length ; i++) {
+		total += cart[i].price;
 	}
 
 	$("#total").append((Math.round(total*100)/100) + ' €');
 }
 
 function listIsEmpty(){
-	$("#chartList").append('<span id="empty" style="width: 100%; text-align: center;">No hay elementos en el carrito T-T</span>');
+	$("#cartList").append('<span id="empty" style="width: 100%; text-align: center;">No hay elementos en el carrito T-T</span>');
 }
