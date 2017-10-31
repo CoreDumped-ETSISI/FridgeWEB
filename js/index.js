@@ -30,8 +30,11 @@ var user;
 function getUser(){
 	$.ajax(userData).done(function (response) {
 		user = response;
+		$("#photo").empty();
 		$("#photo").append('<img class="responsive-img circle" src="' + user.avatarImage + '">');
+		$(".name").empty();
 		$(".name").append(user.displayName);
+		$(".email").empty();
 		$(".email").append(user.email);
 		updateBalance();
 	});
@@ -41,49 +44,68 @@ var productList;
 
 function updateBalance(){
 	$("#saldo").empty();
-	$("#saldo").append(user.balance + ' €');
+	$("#saldo").append((Math.round(user.balance*100)/100) + ' €');
 }
 
 function purchase(){
-	var asdas = "";
+	if(cart.length > 0){
+		var itemChain = "";
 
-	for(var i = 0; i < cart.length-1; i++)
-		asdas = asdas + cart[i]._id + ",";
-	asdas = asdas + cart[cart.length-1]._id;
+		for(var i = 0; i < cart.length-1; i++)
+			itemChain = itemChain + cart[i]._id + ",";
 
-	purchaseSettings.data = { productList : asdas};
+		itemChain = itemChain + cart[cart.length-1]._id;
 
-	console.log(purchaseSettings.data);
-	$.ajax(purchaseSettings).done(function () {
-		getUser();
-	});
+
+		purchaseSettings.data = { productList : itemChain};
+
+		$.ajax(purchaseSettings).done(function () {
+			getUser();
+		});
+
+		updateBalance();
+		refreshFridge();
+		eraseCart();
+	}
 }
 
-$.ajax(settings).done(function (response) {
-	getUser();
-
+function refreshFridge(){
 	$("#products").empty();
+
+	var funcion;
 	
-  	for (var i = 0; i < response.length ; i++) {
-   		$("#products").append(	'<div class="col s12 m6 xl4" onclick="addToCart(\'' + i + '\')">' +
-					          		'<div class="row" style="padding: 0.5em 0.5em 0em 0.5em; margin: 0px;">' +
+  	for (var i = 0; i < productList.length ; i++) {
+  		if(productList[i].stock > 0)
+   			funcion = ' onclick="addToCart(\'' + i + '\')"';
+   		else 
+   			funcion = "";
+
+   		$("#products").append(	'<div class="col s12 m6 xl4"' + funcion + '><div class="row" style="padding: 0.5em 0.5em 0em 0.5em; margin: 0px;">' +
 						          		'<div class="card-panel waves-effect waves-green"' +
 						          			' style="display: inline-block; margin: 0px; width: 100%;">' +
 							            	'<div class="col s4">' +
 								              '<br>' +
-								              '<img class="responsive-img" src="' + response[i].image + '">' +
+								              '<img class="responsive-img" src="' + productList[i].image + '">' +
 								            '</div>' +
 								            '<div class="col s8">' +
-								              '<p style="text-align: center; font-size: 0.9em">' + response[i].name + '</p>' +
-								              '<p style="text-align: left; font-size: 1.2em; margin-left: 1em">' + response[i].price + 
-								              	' €</p>' +
+								              '<p style="text-align: center; font-size: 0.9em">' + productList[i].name + '</p>' +
+								              '<span style="text-align: left; font-size: 1em; margin-left: 1em">' + productList[i].price + 
+								              	' €</span>' +
+								              '<span style="text-align: left; font-size: 1em; margin-left: 2em">Stock: ' + productList[i].stock + 
+								              	'</span>' +
 								            '</div>' +
 							        	'</div>' +
 					        	  	'</div>' +
 					        	'</div>');
    	}
+}
+
+$.ajax(settings).done(function (response) {
+	getUser();
 
    	productList = JSON.parse(JSON.stringify(response));
+
+   	refreshFridge();
 
    	loadCart();
 });
@@ -91,10 +113,13 @@ $.ajax(settings).done(function (response) {
 function addToCart(id){
 	$("#empty").empty();
 
-	cart.push(productList[id]);
+	productList[id].stock--;
+
+	cart.push(productList[id]);	
 	createCartElement(productList[id], (cart.length-1));
 	
 	reloadCartCost();
+	refreshFridge();
 }
 
 function loadCart() {
@@ -113,15 +138,29 @@ function loadCart() {
 }
 
 function eraseCartElement(index){
-	cart.splice(index,1);
+	var sentinel = false;
+	var i = 0;
+
+	while( i < productList.length && !sentinel ){
+		if(productList[i]._id == cart[index]._id){
+			sentinel = true;
+
+			cart.splice(index,1);
+
+			productList[i].stock++;
+		}
+
+		i++;
+	}
+
+	refreshFridge();
 	loadCart();
 }
 
 function createCartElement(product, i){
 	$("#cartList").append('<li class="cartElement valign-wrapper"><img class="responsive-img" src="' + product.image 
 		+ '" style="width: 15%; margin-left: 5%; object-fit: contain;"><span style="width: 65%; padding-left: 1em;">' + product.name 
-		+ '</span><i class="material-icons" onclick="eraseCartElement(\'' + i 
-		+ '\')" style="cursor: pointer;">clear</i></li>');
+		+ '</span><i class="material-icons" onclick="eraseCartElement(\'' + i + '\')" style="cursor: pointer;">clear</i></li>');
 }
 
 function reloadCartCost(){
@@ -138,4 +177,9 @@ function reloadCartCost(){
 
 function listIsEmpty(){
 	$("#cartList").append('<span id="empty" style="width: 100%; text-align: center;">No hay elementos en el carrito T-T</span>');
+}
+
+function eraseCart(){
+	while(cart.length > 0)
+		eraseCartElement(0);
 }
