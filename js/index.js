@@ -26,6 +26,7 @@ var purchaseSettings = {
 };
 
 var user;
+var total = 0;
 
 function getUser(){
 	$.ajax(userData).done(function (response) {
@@ -48,7 +49,10 @@ function updateBalance(){
 }
 
 function purchase(){
-	if(cart.length > 0){
+	if((Math.round(total*100)/100) > (Math.round(user.balance*100)/100)){
+		alert("No tienes saldo suficiente para efectuar la compra");
+	}
+	else if(cart.length > 0){
 		var itemChain = "";
 
 		for(var i = 0; i < cart.length-1; i++)
@@ -60,11 +64,10 @@ function purchase(){
 		purchaseSettings.data = { productList : itemChain};
 
 		$.ajax(purchaseSettings).done(function () {
-			getUser();
+			refreshProductList();
 		});
 
 		updateBalance();
-		refreshFridge();
 		eraseCart();
 	}
 }
@@ -80,19 +83,18 @@ function refreshFridge(){
    		else 
    			funcion = "";
 
-   		$("#products").append(	'<div class="col s12 m6 xl4"' + funcion + '><div class="row" style="padding: 0.5em 0.5em 0em 0.5em; margin: 0px;">' +
+   		$("#products").append(	'<div class="col s12 m6 xl4"' + funcion + '><div class="row" style="padding: 0em; margin: 0px;">' +
 						          		'<div class="card-panel waves-effect waves-green"' +
-						          			' style="display: inline-block; margin: 0px; width: 100%;">' +
-							            	'<div class="col s4">' +
-								              '<br>' +
+						          			' style="display: inline-block; padding: 0px; width: 100%;">' +
+							            	'<div class="col s4" style="padding: 0px;">' +
 								              '<img class="responsive-img" src="' + productList[i].image + '">' +
 								            '</div>' +
 								            '<div class="col s8">' +
 								              '<p style="text-align: center; font-size: 0.9em">' + productList[i].name + '</p>' +
-								              '<span style="text-align: left; font-size: 1em; margin-left: 1em">' + productList[i].price + 
-								              	' €</span>' +
-								              '<span style="text-align: left; font-size: 1em; margin-left: 2em">Stock: ' + productList[i].stock + 
-								              	'</span>' +
+								              '<p style="text-align: left; font-size: 1em; margin-left: 1em">' + productList[i].price + 
+								              	' €</p>' +
+								              '<p style="text-align: left; font-size: 1em; margin-left: 1em">Stock: ' + productList[i].stock + 
+								              	'</p>' +
 								            '</div>' +
 							        	'</div>' +
 					        	  	'</div>' +
@@ -100,15 +102,19 @@ function refreshFridge(){
    	}
 }
 
-$.ajax(settings).done(function (response) {
-	getUser();
+refreshProductList();
 
-   	productList = JSON.parse(JSON.stringify(response));
+function refreshProductList() {
+	$.ajax(settings).done(function (response) {
+		getUser();
 
-   	refreshFridge();
+	   	productList = JSON.parse(JSON.stringify(response));
 
-   	loadCart();
-});
+	   	refreshFridge();
+
+	   	loadCart();
+	});
+}
 
 function addToCart(id){
 	$("#empty").empty();
@@ -164,7 +170,7 @@ function createCartElement(product, i){
 }
 
 function reloadCartCost(){
-	var total = 0;
+	total = 0;
 
 	$("#total").empty();
 

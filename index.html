@@ -13,21 +13,21 @@
 
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container" >
-      <a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Nevera</a></li>
-        <li><a href="#">Historial de compras</a></li>
-        <li><a href="#">Historial de pagos</a></li>
-        <li><a href="#">UserMail</a></li>
-        <li><a href="#">UserImage</a></li>
-        <li><a href="#">Log out</a></li>
-      </ul>
-    </div>
-  </nav>
+  <header>
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container" >
+        <a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Nevera</a></li>
+          <li><a href="#">Historial de compras</a></li>
+          <li><a href="#">Historial de pagos</a></li>
+          <li><a href="#">Log out</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-  <ul id="slide-out" class="side-nav">
+  <ul id="slide-out" class="side-nav fixed">
     <li>
       <div class="user-view" style="background-color: black;">
         <div class="background">
@@ -40,7 +40,7 @@
     <li><div class="divider"></div></li>
     <li>
       <!--  Cart chartList -->
-      <div id="cartList" style="overflow-y: scroll; max-height: 49vh; min-height: 49vh;">
+      <div id="cartList" style="overflow-y: scroll; max-height: 47vh; min-height: 47vh;">
         <span id="empty" style="width: 100%; text-align: center;">No hay elementos en el carrito T-T</span>
       </div>
     </li>
@@ -62,7 +62,7 @@
     </li>
   </ul>
 
-  <div class="container">
+  <main>
     <div class="section">
 
       <!--   Products Section   -->
@@ -71,12 +71,12 @@
       </div>
 
     </div>
-    <div class="fixed-action-btn">
+    <div class="fixed-action-btn hide-on-large-only">
       <a href="#" data-activates="slide-out" class="waves-effect waves-light btn btn-floating button-collapse">
         <i class="material-icons">local_grocery_store</i>
       </a>
     </div>
-  </div>
+  </main>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
