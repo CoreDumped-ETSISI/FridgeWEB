@@ -31,12 +31,14 @@ var total = 0;
 function getUser(){
 	$.ajax(userData).done(function (response) {
 		user = response;
+
 		$("#photo").empty();
 		$("#photo").append('<img class="responsive-img circle" src="' + user.avatarImage + '">');
 		$(".name").empty();
 		$(".name").append(user.displayName);
 		$(".email").empty();
 		$(".email").append(user.email);
+		
 		updateBalance();
 	});
 }
@@ -188,4 +190,10 @@ function listIsEmpty(){
 function eraseCart(){
 	while(cart.length > 0)
 		eraseCartElement(0);
+}
+
+function deleteCredentials(){
+	localStorage.clear();
+	sessionStorage.clear();
+	window.location.replace(URL.server + "login.html");
 }
