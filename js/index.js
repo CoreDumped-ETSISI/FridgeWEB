@@ -28,6 +28,15 @@ var purchaseSettings = {
 var user;
 var total = 0;
 
+function redirectTo(cad){
+	window.location.replace(cad);
+}
+
+function checkToken(){
+	if(!localStorage.getItem('token'))
+		redirectTo(URL.server + "login.html");
+}
+
 function getUser(){
 	$.ajax(userData).done(function (response) {
 		user = response;
@@ -38,7 +47,7 @@ function getUser(){
 		$(".name").append(user.displayName);
 		$(".email").empty();
 		$(".email").append(user.email);
-		
+
 		updateBalance();
 	});
 }
@@ -195,5 +204,6 @@ function eraseCart(){
 function deleteCredentials(){
 	localStorage.clear();
 	sessionStorage.clear();
-	window.location.replace(URL.server + "login.html");
+	//console.log(sessionStorage.getItem("token"))
+	redirectTo(URL.server + "login.html");
 }

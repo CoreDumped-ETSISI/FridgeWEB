@@ -1,6 +1,6 @@
 (function($){
     $(function(){
-        var settings = {
+        /*var settings = {
             "async": true,
             "crossDomain": true,
             "url": config.host + "/login",
@@ -18,6 +18,6 @@
             console.log(response.token);
             localStorage.setItem("token",response.token);
             console.log('Bearer ' + localStorage.getItem("token"));
-        });
+        });*/
     }); // end of document ready
 })(jQuery); // end of jQuery name space
