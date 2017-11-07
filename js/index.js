@@ -13,15 +13,22 @@ var userData = {
     "crossDomain": true,
     "url": config.host + "/user",
     "method": "GET",
-    "headers": {Authorization : 'Bearer ' + localStorage.getItem('token')}
+    "headers": {Authorization : 'Bearer ' + getToken()}
 };
+
+function getToken(){
+	if(localStorage.getItem('token'))
+		return localStorage.getItem('token')
+	else
+		return sessionStorage.getItem('token')
+}
 
 var purchaseSettings = {
     "async": true,
     "crossDomain": true,
     "url": config.host + "/savePurchase",
     "method": "POST",
-    "headers": {Authorization : 'Bearer ' + localStorage.getItem('token')},
+    "headers": {Authorization : 'Bearer ' + getToken()},
     "data" : {}
 };
 
@@ -33,35 +40,46 @@ function redirectTo(cad){
 }
 
 function checkToken(){
-	if(!localStorage.getItem('token'))
+	if(!getToken())
 		redirectTo(URL.server + "login.html");
+}
+
+function getProfile(){
+	$.ajax(userData).done(function (response) {
+		user = response;
+
+		loadProfileData();
+	});
 }
 
 function getUser(){
 	$.ajax(userData).done(function (response) {
 		user = response;
 
-		$("#photo").empty();
-		$("#photo").append('<img class="responsive-img circle" src="' + user.avatarImage + '">');
-		$(".name").empty();
-		$(".name").append(user.displayName);
-		$(".email").empty();
-		$(".email").append(user.email);
-
 		updateBalance();
 	});
+}
+
+function loadProfileData(){
+	cleanAndAppend("#photo", '<img class="responsive-img circle" src="' + user.avatarImage + '">');
+	cleanAndAppend(".name", user.displayName);
+	cleanAndAppend(".email", user.email)
+}
+
+function cleanAndAppend(where, what){
+	$(where).empty();
+	$(where).append(what);
 }
 
 var productList;
 
 function updateBalance(){
-	$("#saldo").empty();
-	$("#saldo").append((Math.round(user.balance*100)/100) + ' €');
+	cleanAndAppend("#saldo", (Math.round(user.balance*100)/100) + ' €');
 }
 
 function purchase(){
 	if((Math.round(total*100)/100) > (Math.round(user.balance*100)/100)){
-		alert("No tienes saldo suficiente para efectuar la compra");
+		Materialize.toast('No tienes saldo suficiente para efectuar la compra', 4000)
 	}
 	else if(cart.length > 0){
 		var itemChain = "";
@@ -114,6 +132,7 @@ function refreshFridge(){
 }
 
 refreshProductList();
+getProfile();
 
 function refreshProductList() {
 	$.ajax(settings).done(function (response) {
@@ -204,6 +223,5 @@ function eraseCart(){
 function deleteCredentials(){
 	localStorage.clear();
 	sessionStorage.clear();
-	//console.log(sessionStorage.getItem("token"))
 	redirectTo(URL.server + "login.html");
 }

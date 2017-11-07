@@ -1,23 +1,31 @@
 (function($){
     $(function(){
-        /*var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": config.host + "/login",
-            "method": "POST",
-            "headers": {
-                "content-type": "application/x-www-form-urlencoded"
-            },
-            "data": {
-                "email": "test@test.com",
-                "password": "12345678"
-            }
-        };
 
-        $.ajax(settings).done(function (response) {
-            console.log(response.token);
-            localStorage.setItem("token",response.token);
-            console.log('Bearer ' + localStorage.getItem("token"));
-        });*/
+
+
     }); // end of document ready
 })(jQuery); // end of jQuery name space
+
+var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": config.host + "/login",
+    "method": "POST",
+    "headers": {
+        "content-type": "application/x-www-form-urlencoded"
+    }
+};
+
+function logIn(){
+    settings.data = { email : $('#email').val(),
+                      password : $('#password').val()};
+
+    $.ajax(settings).done(function (response) {
+        if(document.getElementById("remember-me").checked)
+            localStorage.setItem("token",response.token);
+        else
+            sessionStorage.setItem("token",response.token);
+
+       window.location.replace("./index.html");
+    }).fail(function() { Materialize.toast('Usuario o password incorrectos', 4000); });
+}
