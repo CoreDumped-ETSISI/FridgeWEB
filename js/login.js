@@ -12,6 +12,8 @@ function logIn(){
     settings.data = { email : $('#email').val(),
                       password : $('#password').val()};
 
+    console.log(config.host());
+
     $.ajax(settings).done(function (response) {
         if(document.getElementById("remember-me").checked)
             localStorage.setItem("token",response.token);
@@ -19,5 +21,5 @@ function logIn(){
             sessionStorage.setItem("token",response.token);
 
        //window.location.replace("./index.html");
-    }).fail(function() { Materialize.toast('Usuario o password incorrectos', 4000); console.log(window.location.href); });
+    }).fail(function() { Materialize.toast('Usuario o password incorrectos', 4000); });
 }
