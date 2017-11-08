@@ -1,12 +1,11 @@
 
 var config = {
     "host": function () {
-    			if(window.location.href == "http://fridgeweb.coredumped.es/login.html")
-    				return "http://api.coredumped.es";
-    			else
+    			if(window.location.href.indexOf( "http://192.168.0.24:3000" ) > -1)
     				return "http://192.168.0.24:3000";
+    			else
+    				return "http://api.coredumped.es";
 			}
-    //"host":"http://api.coredumped.es"
     };
 
 var URL = {

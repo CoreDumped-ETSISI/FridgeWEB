@@ -1,7 +1,7 @@
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": config.host + "/login",
+    "url": config.host() + "/login",
     "method": "POST",
     "headers": {
         "content-type": "application/x-www-form-urlencoded"
@@ -20,6 +20,6 @@ function logIn(){
         else
             sessionStorage.setItem("token",response.token);
 
-       //window.location.replace("./index.html");
+       window.location.replace("./index.html");
     }).fail(function() { Materialize.toast('Usuario o password incorrectos', 4000); });
 }
