@@ -1,11 +1,3 @@
-(function($){
-    $(function(){
-
-
-
-    }); // end of document ready
-})(jQuery); // end of jQuery name space
-
 var settings = {
     "async": true,
     "crossDomain": true,
@@ -26,6 +18,6 @@ function logIn(){
         else
             sessionStorage.setItem("token",response.token);
 
-       window.location.replace("./index.html");
-    }).fail(function() { Materialize.toast('Usuario o password incorrectos', 4000); });
+       //window.location.replace("./index.html");
+    }).fail(function() { Materialize.toast('Usuario o password incorrectos', 4000); console.log(window.location.href); });
 }
