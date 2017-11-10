@@ -17,30 +17,34 @@
         </nav>
         <main id="login-page" class="row valign-wrapper" style="min-width: 100%; padding: 0em 2em 0em 2em; margin-bottom: 0em" >
             <div class="col s12 m8 offset-m2 l4 offset-l4 z-depth-4 card-panel" style="padding: 2em">
-                <form id="loginForm" class="login-form" data-toggle="validator">
+                <form class="login-form">
                     <div class="row" style="margin-bottom: 0em">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">mail_outline</i>
                             <input class="validate" id="email" type="email">
                             <label for="email" data-error="wrong" data-success="right">Email</label>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 0.5em">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="displayName">
+                            <label for="displayName">Nombre de usuario</label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 0.5em">
+                        <div class="input-field col s12">
                             <input id="password" type="password">
                             <label for="password">Password</label>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 0.5em">
-                        <div class="col s12 center">
-                            <input type="checkbox" id="remember-me">
-                            <label for="remember-me">Remember me</label>
+                        <div class="input-field col s12">
+                            <input id="rePassword" type="password">
+                            <label for="rePassword">Repeat password</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input href="#" class="btn light-green accent-4 waves-effect waves-light col s12" type="submit" onclick="logIn()">
+                            <a href="#" class="btn light-green accent-4 waves-effect waves-light col s12" onclick="register()">Register</a>
                         </div>
                     </div>
                     <div class="divider"></div>
