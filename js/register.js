@@ -1,7 +1,7 @@
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": config.host + "/signUp",
+    "url": config.host() + "/signUp",
     "method": "POST",
     "headers": {
         "content-type": "application/x-www-form-urlencoded"
