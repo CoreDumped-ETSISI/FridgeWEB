@@ -20,7 +20,7 @@ function logIn(){
             else
                 sessionStorage.setItem("token",response.token);
 
-           window.location.replace("./index.html");
+           window.setTimeout(window.location.replace("./index.html"), 1000);
         }).fail(function() { Materialize.toast('Usuario o password incorrectos', 4000); });  
     }
     else{
