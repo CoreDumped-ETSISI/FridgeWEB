@@ -26,8 +26,14 @@
                     </div>
                     <div class="row" style="margin-bottom: 0.5em">
                         <div class="input-field col s12">
-                            <input id="displayName">
-                            <label for="displayName">Nombre de usuario</label>
+                            <input id="avatarImage" type="url">
+                            <label for="avatarImage">Avatar Image (with URL)</label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 0.5em">
+                        <div class="input-field col s12">
+                            <input id="displayName" type="text">
+                            <label for="displayName">User Name</label>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 0.5em">
@@ -44,32 +50,16 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <a href="#" class="btn light-green accent-4 waves-effect waves-light col s12" onclick="register()">Register</a>
+                            <a href="#" class="btn light-green accent-4 waves-effect waves-light col s12" onclick="register()">Sign In</a>
                         </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="input-field col s6 m6 l6">
-                            <p class="margin medium-small"><a href="#">Register Now!</a></p>
-                        </div>
-                        <div class="input-field col s6 m6 l6">
-                            <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
-                        </div>          
                     </div>
                 </form>
             </div>
         </main>
-        <footer class="page-footer  light-green accent-4">
-            <div class="footer-copyright">
-                <div class="container">
-                    Made by <a class="green-text text-lighten-5" href="http://coredumped.es">CoreDumped</a>
-                </div>
-            </div>
-        </footer>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
         <script src="js/config.js"></script>
-        <script src="js/login.js"></script>
+        <script src="js/register.js"></script>
     </body>
 </html>
