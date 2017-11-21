@@ -29,7 +29,7 @@ function register(){
             $.ajax(settings).done(function (response) {
                 console.log(response);
 
-                Materialize.toast('Register done. Enjoy your meals :)', 4000);
+                Materialize.toast('Register done. Enjoy your meals :3', 4000);
 
                 setTimeout(()=>{ window.location.replace("./login.html") }, 4000);
             }).fail(function() { Materialize.toast('Something went wrong :(', 4000); });
