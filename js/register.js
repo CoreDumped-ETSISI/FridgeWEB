@@ -17,6 +17,9 @@ function register(){
         else if($('#rePassword').val() == "" || $('#password').val() == ""){
             Materialize.toast('Please enter a password', 4000);
         }
+        else if($('#password').val().length < 8){
+            Materialize.toast('Password must have eight characters', 4000);
+        }
         else if($('#password').val() == $('#rePassword').val()){
             settings.data = { email : $('#email').val(),
                               displayName : $('#displayName').val(),
@@ -26,9 +29,9 @@ function register(){
             $.ajax(settings).done(function (response) {
                 console.log(response);
 
-                Materialize.toast('We have send an email to confirm your account, please check it.', 4000);
+                Materialize.toast('Register done. Enjoy your meals :)', 4000);
 
-                window.setTimeout(window.location.replace("./login.html"), 4000);
+                setTimeout(()=>{ window.location.replace("./login.html") }, 4000);
             }).fail(function() { Materialize.toast('Something went wrong :(', 4000); });
         }
         else
