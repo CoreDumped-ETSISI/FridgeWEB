@@ -3,7 +3,7 @@ var cart = [];
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": config.host() + "/availableProductList",
+    "url": config.host() + "/product/inStock",
     "method": "GET",
     "headers": {}
 };
@@ -26,7 +26,7 @@ function getToken(){
 var purchaseSettings = {
     "async": true,
     "crossDomain": true,
-    "url": config.host() + "/savePurchase",
+    "url": config.host() + "/purchase/save",
     "method": "POST",
     "headers": {Authorization : 'Bearer ' + getToken()},
     "data" : {}
