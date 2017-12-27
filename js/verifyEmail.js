@@ -1,7 +1,7 @@
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": config.host() + "/verifyEmail/" + collectTokens(),
+    "url": config.host() + "/verifyEmail?token=" + collectTokens(),
     "method": "POST",
     "headers": {
         "content-type": "application/x-www-form-urlencoded"
