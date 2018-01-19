@@ -116,6 +116,7 @@ function refreshFridge(){
 						          		'<div class="card-panel waves-effect waves-green"' +
 						          			' style="display: inline-block; padding: 0px; width: 100%;">' +
 							            	'<div class="col s4" style="padding: 0px;">' +
+								              '<br/>' +
 								              '<img class="responsive-img" src="' + productList[i].image + '">' +
 								            '</div>' +
 								            '<div class="col s8">' +
