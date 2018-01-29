@@ -115,7 +115,7 @@ function refreshFridge(){
    		$("#products").append(	'<div class="col s12 m6 xl4"' + funcion + '><div class="row" style="padding: 0em; margin: 0px;">' +
 						          		'<div class="card-panel waves-effect waves-green"' +
 						          			' style="display: inline-block; padding: 0px; width: 100%;">' +
-							            	'<div class="col s4" style="padding: 0px;">' +
+							            	'<div class="col s4" style="padding: 0em 0em 1em 1em;">' +
 								              '<br/>' +
 								              '<img class="responsive-img" src="' + productList[i].image + '">' +
 								            '</div>' +
