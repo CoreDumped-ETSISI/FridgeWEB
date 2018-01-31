@@ -1,7 +1,7 @@
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": config.host() + "/resetPassword/" + collectTokens(),
+    "url": config.host() + "/resetPassword?" + collectTokens(),
     "method": "POST",
     "headers": {
         "content-type": "application/x-www-form-urlencoded"
@@ -9,8 +9,8 @@ var settings = {
 };
 
 function collectTokens(){
-    var token = window.location.href.split("/");
-    return token[token.length-2] + "/" + token[token.length-1];
+    var token = window.location.href.split("?");
+    return token[token.length-1];
 };
 
 function reset(){
