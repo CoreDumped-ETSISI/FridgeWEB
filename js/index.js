@@ -119,10 +119,10 @@ function refreshFridge(){
 								              '<img class="responsive-img imagen-producto" src="' + productList[i].image + '">' +
 								            '</div>' +
 								            '<div class="col s8">' +
-								              '<div class="titulo-producto">' + productList[i].name + '</div>' +
-								              '<div class="precio-producto" >' + productList[i].price + 
-								              	' €</div>' +
-								              '<div class="stock-producto">Stock: ' + productList[i].stock + '</div>' +
+								              '<span class="titulo-producto">' + productList[i].name + '</span>' +
+								              '<span class="precio-producto" >' + productList[i].price + 
+								              	' €</span>' +
+								              '<span class="stock-producto">Stock: ' + productList[i].stock + '</span>' +
 								            '</div>' +
 							        	'</div>' +
 					        	  	'</div>' +
