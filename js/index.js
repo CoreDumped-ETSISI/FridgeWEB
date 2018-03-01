@@ -112,19 +112,17 @@ function refreshFridge(){
    		else 
    			funcion = "";
 
-   		$("#products").append(	'<div class="col s12 m6 xl4"' + funcion + '><div class="row" style="padding: 0em; margin: 0px;">' +
-						          		'<div class="card-panel waves-effect waves-green"' +
-						          			' style="display: inline-block; padding: 0px; width: 100%;">' +
+   		$("#products").append(	'<div class="col s12 m6 xl4"' + funcion + '><div class="row linea-producto">' +
+						          		'<div class="card-panel waves-effect waves-green panel-producto">' +
 							            	'<div class="col s4" style="padding: 0em 0em 1em 1em;">' +
 								              '<br/>' +
-								              '<img class="responsive-img" src="' + productList[i].image + '">' +
+								              '<img class="responsive-img imagen-producto" src="' + productList[i].image + '">' +
 								            '</div>' +
 								            '<div class="col s8">' +
-								              '<p style="text-align: center; font-size: 0.9em">' + productList[i].name + '</p>' +
-								              '<p style="text-align: left; font-size: 1em; margin-left: 1em">' + productList[i].price + 
-								              	' €</p>' +
-								              '<p style="text-align: left; font-size: 1em; margin-left: 1em">Stock: ' + productList[i].stock + 
-								              	'</p>' +
+								              '<div class="titulo-producto">' + productList[i].name + '</div>' +
+								              '<div class="precio-producto" >' + productList[i].price + 
+								              	' €</div>' +
+								              '<div class="stock-producto">Stock: ' + productList[i].stock + '</div>' +
 								            '</div>' +
 							        	'</div>' +
 					        	  	'</div>' +
