@@ -1,6 +1,6 @@
 
 var config = {
-    "host": function () { return "http://api.coredumped.es"; }
+    "host": function () { return "https://api.coredumped.es"; }
 };
 
 var URL = {
