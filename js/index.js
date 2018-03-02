@@ -211,7 +211,7 @@ function reloadCartCost(){
 }
 
 function listIsEmpty(){
-	$("#cartList").append('<span id="empty" style="width: 100%; text-align: center;">No hay elementos en el carrito T-T</span>');
+	$("#cartList").append('<span id="empty" style="width: 100%; color:#aaa;">No hay productos en el carrito :(</span>');
 }
 
 function eraseCart(){
