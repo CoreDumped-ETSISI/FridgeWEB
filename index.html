@@ -25,38 +25,46 @@
     </nav>
   </header>
 
-  <ul id="slide-out" class="side-nav fixed">
+  <ul id="slide-out" class="side-nav fixed oscuro texto-claro">
     <li>
-      <div class="user-view" style="background-color: black;">
+      <div class="user-view oscuro">
         <div class="background">
         </div>
         <a href="#!user" id="photo"></a>
-        <a id="logOut" title="log out" class="light-green accent-4 waves-effect waves-light btn" onclick="deleteCredentials()">
+        <a id="logOut" title="log out" class="accent-4 waves-effect waves-light btn verde-core" onclick="deleteCredentials()">
           <i class="large material-icons">close</i>
         </a>
         <a href="#!name"><span class="white-text name"></span></a>
         <a href="#!email"><span class="white-text email"></span></a>
       </div>
     </li>
-    <li><div class="divider"></div></li>
     <li>
       <!--  Cart chartList -->
       <div id="cartList" style="overflow-y: scroll; max-height: 47vh; min-height: 47vh;">
         <span id="empty" style="width: 100%; text-align: center;">No hay elementos en el carrito T-T</span>
       </div>
+	  
     </li>
     <li><div class="divider"></div></li>
     <li>
-      <div>
-        <span style="width: 50%; padding-left: 1em;">Total:</span>
+	
+      <!--  TOTAL -->
+	  <div class="purchase-data-container">
+        <span class="p">Total:</span>
         <span id="total" style="width: 50%; padding-left: 1em;"></span>
       </div>
-      <div>
-        <span style="width: 50%; padding-left: 1em;">Saldo:</span>
+	  
+	  
+      <!--  SALDO -->
+	  <div class="purchase-data-container">
+        <span>Saldo:</span>
         <span id="saldo" style="width: 50%; padding-left: 1em;"></span>
       </div>
-      <div class="action-btn">
-        <a href="#" class="waves-effect waves-light btn" style="width: 100%;" onclick="purchase()">
+	  
+	  
+      <!--  BOTON DE LA COMPRA  -->
+      <div class="action-btn center">
+        <a href="#" class="waves-effect waves-light btn compra" onclick="purchase()">
           <i class="material-icons">local_grocery_store</i>
         </a>
       </div>

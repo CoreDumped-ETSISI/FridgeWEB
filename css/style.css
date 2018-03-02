@@ -2,11 +2,67 @@
 /**
 *
 *Verde Core = #64dd17;
+*contraste = 900251;
+*claro=#ccc;
 *oscuro = #262626;
 *más oscuro = #1d1d1d;
 */
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:400,700');
+
+.verde-core{
+	background-color:#64dd17;
+}
+.claro{
+	background-color:white;
+}
+.texto-verde-core{
+	color:#64dd17;
+}
+
+.oscuro{
+	background-color:#262626;
+}
+.texto-oscuro{
+	
+	color:#262626;
+}
+
+.mas-oscuro{
+	background-color:#1d1d1d;
+}
+
+.texto-mas-oscuro{
+	color:#1d1d1d;
+}
+
+.texto-claro{
+	color: white;
+}
+
+.btn, .btn-large{
+	color:#262626;
+	background-color:#64dd17;
+}
+
+.btn:hover, .btn-large:hover{
+	color:#262626;
+	background-color:#a5e27f;
+}
+.btn:focus, .btn-large:focus{
+	color:#1d1d1d;
+	background-color:white;
+}
+
+.compra{
+	width:75%;
+	border-radius:25px;
+	margin:auto;
+}
+
+.side-nav .divider {
+	margin: 0;
+}
 
 html, body {
     height: 100%;
@@ -30,17 +86,37 @@ main {
   }
 }
 
+.btn i, .btn-large i, .btn-floating i, .btn-large i, .btn-flat i {
+	font-size: 1.8rem;
+	line-height: inherit;
+}
+
 #logOut{
   position: absolute;
   right: 10%;
   top: 5vh;
   width: 40px;
   height: 40px;
+  background-color:#900251;
+}
+
+#cartList{
+	padding:15px;
+	color:#1d1d1d;
+	background-color:white;
+}
+
+#cartList img{
+	border-radius:50%;
+}
+
+.purchase-data-container{
+	padding-left: 32px ;
 }
 
 .header {
 	background-color: #262626;
-	width: 75%;
+	width: 77%;
 	float: right;
 	padding: 5px;
 	min-height: 80px;
@@ -139,10 +215,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /*relativo a las tarjetas de producto*/
 
-.side-nav {
-	width: 25%;
-}
-
 .products-section {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
@@ -165,32 +237,54 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 @media only screen and (max-width: 992px){
 	.header {
-	width: 100%;
-}
+		width: 100%;
+	}
 	
 	.products-section {
 		width: 100%;
 	}
-	
-	
 }
 
-/*
+
+@media only screen and (min-width:993px){
+	
+.side-nav {
+	width: 23%;
+}
+}
+
+
+.total-text{
+width: 50%; padding-left: 1em;
+}
+
+.info-producto{
+	position:relative;
+}
+
 .titulo-producto {
+	position:relative;
 	padding-top: 0.5em;
-	font-size: 1.4em;
+	color:#1d1d1d;
+	font-size: 1.8em;
 	font-family: "Roboto Slab";
-	margin-left: 0.5em;
 }
 
 .precio-producto{
-	padding-top: 0.5em;
-	font-size: 1em;
+	position:relative;
+	padding-top: 0.2em;
+	color:#262626;
+	font-size: 1.4em;
 	font-family: "Roboto mono";
-	margin-left: 0.5em;
 }
 
 .stock-producto{
-	font-size: 0.7em;
+	position:absolute;
+	font-size: 1em;
+	color:#262626;
 	font-family: "Roboto mono";
-}*/
+	font-weight:thin;
+	margin-left: 0.5em;
+	bottom: 5px;
+	right: 8px;
+}
