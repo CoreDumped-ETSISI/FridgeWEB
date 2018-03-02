@@ -114,6 +114,10 @@ main {
 	padding-left: 32px ;
 }
 
+.cartElement{
+	margin-top:5px;
+	font-size:1.2em;
+}
 
 .header {
 	background-color: #262626;
@@ -271,7 +275,7 @@ width: 50%; padding-left: 1em;
 	position:relative;
 	padding-top: 0.5em;
 	color:#1d1d1d;
-	font-size: 1.8em;
+	font-size: 1.6em;
 	font-family: "Roboto Slab";
 }
 
