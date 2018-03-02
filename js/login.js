@@ -27,3 +27,9 @@ function logIn(){
         Materialize.toast('Please enter a valid email', 4000)
     }
 }
+
+$("#password").keyup(function(event) {
+	if (event.keyCode === 13) {
+        $("#login").click();
+    }
+});
