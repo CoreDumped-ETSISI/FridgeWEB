@@ -10,34 +10,38 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:400,700');
 
+.roboto-mono{
+	font-family:"Roboto Mono" !important;
+}
+
 .verde-core{
-	background-color:#64dd17;
+	background-color:#64dd17  !important;
 }
 .claro{
-	background-color:white;
+	background-color:white  !important;
 }
 .texto-verde-core{
-	color:#64dd17;
+	color:#64dd17  !important;
 }
 
 .oscuro{
-	background-color:#262626;
+	background-color:#262626 !important;
 }
 .texto-oscuro{
 	
-	color:#262626;
+	color:#262626 !important;
 }
 
 .mas-oscuro{
-	background-color:#1d1d1d;
+	background-color:#1d1d1d !important;
 }
 
 .texto-mas-oscuro{
-	color:#1d1d1d;
+	color:#1d1d1d !important;
 }
 
 .texto-claro{
-	color: white;
+	color: white !important;
 }
 
 .btn, .btn-large{
@@ -54,10 +58,15 @@
 	background-color:white;
 }
 
-.compra{
-	width:75%;
+.sidebar-button{
+	width:100%;
 	border-radius:25px;
 	margin:auto;
+}
+
+.sidebar-margins{
+	
+	margin: 0 32px ;
 }
 
 .side-nav .divider {
@@ -92,12 +101,9 @@ main {
 }
 
 #logOut{
-  position: absolute;
-  right: 10%;
-  top: 5vh;
-  width: 40px;
-  height: 40px;
+	margin-top:1em;
   background-color:#900251;
+  color:white;
 }
 
 #cartList{
@@ -299,4 +305,14 @@ width: 50%; padding-left: 1em;
 	margin-left: 0.5em;
 	bottom: 5px;
 	right: 8px;
+}
+
+.saldo-position{
+	position:absolute;
+	top: 15px;
+	right: 32px;
+}
+
+.precio-total{
+	font-size:1.6em;
 }
