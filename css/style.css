@@ -114,12 +114,18 @@ main {
 	padding-left: 32px ;
 }
 
+
 .header {
 	background-color: #262626;
 	width: 77%;
 	float: right;
 	padding: 5px;
 	min-height: 80px;
+}
+
+
+.full-width{
+	width:100%;
 }
 
     div.center {
@@ -223,8 +229,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .waves-effect img {
-	border-radius: 50%;
-	border: solid #64dd17 5px;
+	border-radius: 5px;
 }
 
 .linea-producto{
