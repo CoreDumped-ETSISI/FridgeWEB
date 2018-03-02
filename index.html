@@ -16,11 +16,6 @@
   <header>
     <nav class="header" role="navigation">
             <div class="nav-wrapper container center" ><img class="logo-header" src="images/logo.png"></div>
-        <ul class="right oculto">
-		  <li><a href="#">Nevera</a></li>
-          <li><a href="#">Historial de compras</a></li>
-          <li><a href="#">Historial de pagos</a></li>
-        </ul>
       </div>
     </nav>
   </header>
@@ -31,11 +26,10 @@
         <div class="background">
         </div>
         <a href="#!user" id="photo"></a>
-        <a id="logOut" title="log out" class="accent-4 waves-effect waves-light btn verde-core" onclick="deleteCredentials()">
-          <i class="large material-icons">close</i>
-        </a>
         <a href="#!name"><span class="white-text name"></span></a>
         <a href="#!email"><span class="white-text email"></span></a>
+		<span class="white-text saldo-position roboto-mono">Saldo:  <span class="white-text" id="saldo"></span></span>
+      </div>
       </div>
     </li>
     <li>
@@ -49,25 +43,39 @@
     <li>
 	
       <!--  TOTAL -->
-	  <div class="purchase-data-container">
-        <span class="p">Total:</span>
-        <span id="total" style="width: 50%; padding-left: 1em;"></span>
-      </div>
-	  
-	  
-      <!--  SALDO -->
-	  <div class="purchase-data-container">
-        <span>Saldo:</span>
-        <span id="saldo" style="width: 50%; padding-left: 1em;"></span>
+	  <div class="center precio-total roboto-mono">
+        <span class="p">TOTAL:</span>
+        <span id="total" style="padding-left: 0.2em;"></span>
       </div>
 	  
 	  
       <!--  BOTON DE LA COMPRA  -->
-      <div class="action-btn center">
-        <a href="#" class="waves-effect waves-light btn compra" onclick="purchase()">
+      <div class="action-btn sidebar-margins">
+        <a href="#" class="waves-effect waves-light btn sidebar-button" onclick="purchase()">
           <i class="material-icons">local_grocery_store</i>
         </a>
       </div>
+	  
+	  <!--Enlaces ocultos.
+	  Eliminar "oculto" de class para visualizarlos
+		-->
+		<div class="oculto" style="padding-top:25px;">
+			<div class="action-btn sidebar-margins">
+				<a href="#"class="waves-effect waves-light btn sidebar-button mas-oscuro texto-verde-core">Historial de compras</a>
+			</div>
+			<div class="action-btn sidebar-margins">
+				<a href="#"class="waves-effect waves-light btn sidebar-button mas-oscuro texto-verde-core">Historial de pagos</a>
+			</div>
+		</div>
+	  
+	  <!-- Cerrar sesión-->
+	  <div class="action-btn sidebar-margins">
+		<a id="logOut" title="log out" class="waves-effect waves-light btn sidebar-button" onclick="deleteCredentials()">
+			  Cerrar sesión
+			</a>
+      </div>
+	  
+	          
     </li>
   </ul>
 
