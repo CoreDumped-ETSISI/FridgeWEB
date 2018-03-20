@@ -89,15 +89,24 @@ function purchase(){
 
 		itemChain = itemChain + cart[cart.length-1]._id;
 
-
 		purchaseSettings.data = { productList : itemChain};
 
-		$.ajax(purchaseSettings).done(function () {
-			refreshProductList();
+		$.ajax(purchaseSettings).done(function (data, statustext, xhr) {
+			if(xhr.status == 200)
+			{
+				Materialize.toast('Su compra se ha realizado correctamente', 4000);
+				eraseCart();
+			}
+			else
+			{
+				Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000);
+			}
+		}).fail(function () {
+			console.log("Algo ha ido mal")
 		});
 
+		refreshProductList();
 		updateBalance();
-		eraseCart();
 	}
 }
 
