@@ -96,6 +96,8 @@ function purchase(){
 			{
 				Materialize.toast('Su compra se ha realizado correctamente', 4000);
 				eraseCart();
+				refreshProductList();
+				updateBalance();
 			}
 			else
 			{
@@ -104,9 +106,6 @@ function purchase(){
 		}).fail(function () {
 			console.log("Algo ha ido mal")
 		});
-
-		refreshProductList();
-		updateBalance();
 	}
 }
 
