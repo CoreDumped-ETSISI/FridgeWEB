@@ -79,7 +79,7 @@ function updateBalance(){
 
 function purchase(){
 	if((Math.round(total*100)/100) > (Math.round(user.balance*100)/100)){
-		Materialize.toast('No tienes saldo suficiente para efectuar la compra', 4000)
+		Materialize.toast('No tienes saldo suficiente para efectuar la compra', 4000, 'orange');
 	}
 	else if(cart.length > 0){
 		var itemChain = "";
@@ -94,17 +94,17 @@ function purchase(){
 		$.ajax(purchaseSettings).done(function (data, statustext, xhr) {
 			if(xhr.status == 200)
 			{
-				Materialize.toast('Su compra se ha realizado correctamente', 4000);
+				Materialize.toast('Su compra se ha realizado correctamente', 4000, 'green');
 				eraseCart();
 				refreshProductList();
 				updateBalance();
 			}
 			else
 			{
-				Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000);
+				Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 			}
 		}).fail(function () {
-			console.log("Algo ha ido mal")
+			Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 		});
 	}
 }
