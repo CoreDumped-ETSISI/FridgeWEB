@@ -45,18 +45,26 @@ function checkToken(){
 }
 
 function getProfile(){
-	$.ajax(userData).done(function (response) {
-		user = response;
+	$.ajax(userData).done(function (data, statustext, xhr) {
+		if(xhr == 401)
+		{
+			setTimeout(()=>{ redirectTo(URL.server + "login.html"); }, 4000);
+		}
+		user = data;
 
 		loadProfileData();
+	}).fail(function () {
+			Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 	});
 }
 
 function getUser(){
-	$.ajax(userData).done(function (response) {
-		user = response;
+	$.ajax(userData).done(function (data, statustext, xhr) {
+		user = data;
 
 		updateBalance();
+	}).fail(function () {
+			Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 	});
 }
 
@@ -142,14 +150,20 @@ refreshProductList();
 getProfile();
 
 function refreshProductList() {
-	$.ajax(settings).done(function (response) {
+	$.ajax(settings).done(function (data, statustext, xhr) {
+		if(xhr == 401)
+		{
+			redirectTo(URL.server + "login.html");
+		}
 		getUser();
 
-	   	productList = JSON.parse(JSON.stringify(response));
+	   	productList = JSON.parse(JSON.stringify(data));
 
 	   	refreshFridge();
 
 	   	loadCart();
+	}).fail(function () {
+			Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 	});
 }
 
