@@ -21,7 +21,10 @@ function logIn(){
                 sessionStorage.setItem("token",response.token);
 
            window.setTimeout(window.location.replace("./index.html"), 10);
-        }).fail(function() { Materialize.toast('Incorrect email or password', 4000); });  
+        }).fail(function (xhr, textStatus, errorThrown) {
+            toLogin(xhr.status); 
+            Materialize.toast('Incorrect email or password', 4000); 
+        });  
     }
     else{
         Materialize.toast('Please enter a valid email', 4000)

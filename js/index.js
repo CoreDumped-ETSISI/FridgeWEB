@@ -16,6 +16,14 @@ var userData = {
     "headers": {Authorization : 'Bearer ' + getToken()}
 };
 
+function toLogin(status){
+	if(status == 401)
+	{
+		console.log("bamoh ah redirigi");
+		redirectTo(URL.server + "login.html");
+	}
+}
+
 function getToken(){
 	if(localStorage.getItem('token'))
 		return localStorage.getItem('token')
@@ -46,25 +54,24 @@ function checkToken(){
 
 function getProfile(){
 	$.ajax(userData).done(function (data, statustext, xhr) {
-		if(xhr == 401)
-		{
-			setTimeout(()=>{ redirectTo(URL.server + "login.html"); }, 4000);
-		}
 		user = data;
 
 		loadProfileData();
-	}).fail(function () {
-			Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
+	}).fail(function (xhr, textStatus, errorThrown) {
+		toLogin(xhr.status);
+		Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 	});
 }
 
 function getUser(){
+		console.log("getUser");
 	$.ajax(userData).done(function (data, statustext, xhr) {
 		user = data;
 
 		updateBalance();
-	}).fail(function () {
-			Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
+	}).fail(function (xhr, textStatus, errorThrown) {
+		toLogin(xhr.status);
+		Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 	});
 }
 
@@ -86,6 +93,7 @@ function updateBalance(){
 }
 
 function purchase(){
+	checkToken();
 	if((Math.round(total*100)/100) > (Math.round(user.balance*100)/100)){
 		Materialize.toast('No tienes saldo suficiente para efectuar la compra', 4000, 'orange');
 	}
@@ -111,7 +119,8 @@ function purchase(){
 			{
 				Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 			}
-		}).fail(function () {
+		}).fail(function (xhr, textStatus, errorThrown) {
+			toLogin(xhr.status);
 			Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 		});
 	}
@@ -151,10 +160,6 @@ getProfile();
 
 function refreshProductList() {
 	$.ajax(settings).done(function (data, statustext, xhr) {
-		if(xhr == 401)
-		{
-			redirectTo(URL.server + "login.html");
-		}
 		getUser();
 
 	   	productList = JSON.parse(JSON.stringify(data));
@@ -162,8 +167,9 @@ function refreshProductList() {
 	   	refreshFridge();
 
 	   	loadCart();
-	}).fail(function () {
-			Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
+	}).fail(function (xhr, textStatus, errorThrown) {
+		toLogin(xhr.status);
+		Materialize.toast('Algo ha ido mal. Intentelo de nuevo', 4000, 'red');
 	});
 }
 

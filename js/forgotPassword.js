@@ -19,7 +19,10 @@ function recover(){
             Materialize.toast('Okey. We will send you a mail to this email ', 4000);
 
             setTimeout(()=>{ window.location.replace("./login.html") }, 4000);
-        }).fail(function() { Materialize.toast('Something went wrong :(', 4000); });
+        }).fail(function (xhr, textStatus, errorThrown) {
+            toLogin(xhr.status);
+            Materialize.toast('Something went wrong :(', 4000); 
+        });
     }
     else{
         Materialize.toast('Please enter a valid email', 4000)

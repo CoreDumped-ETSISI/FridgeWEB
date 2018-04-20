@@ -29,7 +29,10 @@ function reset(){
             Materialize.toast('Password changed', 4000);
 
             setTimeout(()=>{ window.location.replace("./login.html") }, 4000);
-        }).fail(function() { Materialize.toast('Something went wrong :(', 4000); });
+    }).fail(function (xhr, textStatus, errorThrown) {
+        toLogin(xhr.status); 
+        Materialize.toast('Something went wrong :(', 4000);
+    });
     }
     else
     {
