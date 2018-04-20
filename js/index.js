@@ -19,7 +19,6 @@ var userData = {
 function toLogin(status){
 	if(status == 401)
 	{
-		console.log("bamoh ah redirigi");
 		redirectTo(URL.server + "login.html");
 	}
 }
@@ -64,7 +63,6 @@ function getProfile(){
 }
 
 function getUser(){
-		console.log("getUser");
 	$.ajax(userData).done(function (data, statustext, xhr) {
 		user = data;
 
