@@ -22,7 +22,6 @@ function logIn(){
 
            window.setTimeout(window.location.replace("./index.html"), 10);
         }).fail(function (xhr, textStatus, errorThrown) {
-            toLogin(xhr.status); 
             Materialize.toast('Incorrect email or password', 4000); 
         });  
     }
